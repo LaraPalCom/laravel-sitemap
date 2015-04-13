@@ -1,5 +1,5 @@
 {
-    "name": "roumen/sitemap",
+    "name": "matiux/laravel-sitemap",
     "description": "A simple sitemap generator for Laravel.",
     "homepage": "http://roumen.it/projects/laravel-sitemap",
     "keywords": ["laravel", "sitemap"],
