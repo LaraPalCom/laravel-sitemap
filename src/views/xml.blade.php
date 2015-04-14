@@ -11,6 +11,12 @@ if (!empty($item['translations'])) {
   }
 }
 
+if (!empty($item['mobile'])) {
+
+    echo "\t\t" . '<xhtml:link rel="alternate" media="only screen and (max-width: 640px)" href="' . $item['mobile'] . '" />' . "\n";
+
+}
+
 if ($item['priority'] !== null) {
   echo "\t\t" . '<priority>' . $item['priority'] . '</priority>' . "\n";
 }
