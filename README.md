@@ -7,7 +7,7 @@ A simple sitemap generator for Laravel 4.
 
 ## Installation
 
-Run the following command and provide the latest stable version (e.g v2.4.15) :
+Run the following command and provide the latest stable version (e.g v2.4.16) :
 
 ```bash
 composer require roumen/sitemap
@@ -16,7 +16,7 @@ composer require roumen/sitemap
 or add the following to your `composer.json` file :
 
 ```json
-"roumen/sitemap": "~2.4"
+"roumen/sitemap": "2.4.*"
 ```
 
 Then register this service provider with Laravel :
