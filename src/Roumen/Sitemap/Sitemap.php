@@ -73,7 +73,7 @@ class Sitemap
      *
      * @return void
      */
-    public function add($loc, $lastmod = null, $priority = null, $freq = null, $images = array(), $title = null, $translations = array())
+    public function add($loc, $lastmod = null, $priority = null, $freq = null, $images = array(), $title = null, $translations = array(), $videos = array())
     {
 
         if ($this->model->getEscaping())
@@ -104,6 +104,14 @@ class Sitemap
                 }
             }
 
+            if ($videos)
+            {
+                foreach ($videos as $k => $video)
+                {
+                    if ($video['title']) $videos[$k]['title'] = htmlentities($video['title'], ENT_XML1);
+                    if ($video['description']) $videos[$k]['description'] = htmlentities($video['description'], ENT_XML1);
+                }
+            }
         }
 
 
@@ -115,7 +123,8 @@ class Sitemap
                     'freq' => $freq,
                     'images' => $images,
                     'title' => $title,
-                    'translations' => $translations
+                    'translations' => $translations,
+                    'videos' => $videos
                 )
         );
     }
