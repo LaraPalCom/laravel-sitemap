@@ -20,7 +20,50 @@ class SitemapTest extends PHPUnit_Framework_TestCase
 
     public function testSitemapAdd()
     {
-    	$this->sitemap->add('TestLoc','2014-02-29 00:00:00', 0.95, 'weekly', array(array("url"=>"test.png"),array("url"=>"<&>")), 'TestTitle');
+        $videos = [
+                    [
+                        'title'=>"TestTitle",
+                        'description'=>"TestDescription",
+                        'content_loc' => 'https://roumen.it/testVideo.flv',
+                        'uploader' => [
+                                       'uploader' => 'Roumen',
+                                       'info' => 'https://roumen.it'
+                                       ],
+                        'gallery_loc' => [
+                                            'title' => 'testGalleryTitle',
+                                            'gallery_loc' => 'https://roumen.it/testGallery'
+                                        ],
+                        'price' => [
+                                            'currency' => 'EUR',
+                                            'price' => '100.00'
+                                        ],
+                        'restriction' => [
+                                            'relationship' => 'allow',
+                                            'restriction' => 'IE GB US CA'
+                                        ],
+                        'player_loc' => [
+                                            'player_loc' => 'https://roumen.it/testPlayer.flv',
+                                            'allow_embed' => 'yes',
+                                            'autoplay' => 'ap=1'
+                                        ],
+                        'thumbnail_loc' => 'https://roumen.it/testVideo.png',
+                        'duration' => '600',
+                        'expiration_date' => '2015-12-30T23:59:00+02:00',
+                        'rating' => '5.00',
+                        'view_count' => '100',
+                        'publication_date' => '2015-05-30T23:59:00+02:00',
+                        'family_friendly' => 'yes',
+                        'requires_subscription' => 'no',
+
+
+
+                    ],
+                    [   'title'=>"TestTitle2&",
+                        'description'=>"TestDescription2&",
+                        'content_loc' => 'https://roumen.it/testVideo2.flv',]
+                    ];
+
+    	$this->sitemap->add('TestLoc','2014-02-29 00:00:00', 0.95, 'weekly', array(array("url"=>"test.png"),array("url"=>"<&>")), 'TestTitle', array(), $videos);
 
         $items = $this->sitemap->model->getItems();
 
@@ -32,7 +75,10 @@ class SitemapTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('weekly', $items[0]['freq']);
         $this->assertEquals(array(array("url"=>"test.png"),array("url"=>"&lt;&amp;&gt;")), $items[0]['images']);
         $this->assertEquals('TestTitle', $items[0]['title']);
-
+        $this->assertEquals($videos[0]['content_loc'], $items[0]['videos'][0]['content_loc']);
+        $this->assertEquals($videos[1]['content_loc'], $items[0]['videos'][1]['content_loc']);
+        $this->assertEquals('TestTitle2&amp;', $items[0]['videos'][1]['title']);
+        $this->assertEquals('TestDescription2&amp;', $items[0]['videos'][1]['description']);
     }
 
     public function testSitemapAttributes()
