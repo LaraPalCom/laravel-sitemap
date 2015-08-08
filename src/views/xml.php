@@ -64,3 +64,4 @@ if (!empty($item['videos'])) {
   </url>
 <?php endforeach; ?>
 </urlset>
+
