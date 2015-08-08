@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <?php foreach($items as $item) : ?>
   <url>
-    <loc><?= $item['loc'] ?></loc>
+    <loc><a href="<?= $item['loc'] ?>"><?= $item['loc'] ?></a></loc>
 <?php
 
 if (!empty($item['translations'])) {
