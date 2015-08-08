@@ -5,6 +5,7 @@
     <loc xlink:type="simple" xlink:href="<?= $item['loc'] ?>">
       <?= $item['loc'] ?>
     </loc>
+  </url>
 <?php
 
 if (!empty($item['translations'])) {
