@@ -14,8 +14,7 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/support": "~5",
-        "components/jquery": "*"
+        "illuminate/support": "~5"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
