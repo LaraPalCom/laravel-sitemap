@@ -6,7 +6,7 @@ namespace Roumen\Sitemap;
  * Sitemap class for laravel-sitemap package.
  *
  * @author Roumen Damianoff <roumen@dawebs.com>
- * @version 2.4.15
+ * @version 2.4.17
  * @link http://roumen.it/projects/laravel-sitemap
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
@@ -70,10 +70,11 @@ class Sitemap
      * @param array  $images
      * @param string $title
      * @param array $translations
+     * @param array $googlenews
      *
      * @return void
      */
-    public function add($loc, $lastmod = null, $priority = null, $freq = null, $images = array(), $title = null, $translations = array(), $videos = array())
+    public function add($loc, $lastmod = null, $priority = null, $freq = null, $images = array(), $title = null, $translations = array(), $videos = array(), $googlenews = array())
     {
 
         if ($this->model->getEscaping())
@@ -112,8 +113,17 @@ class Sitemap
                     if ($video['description']) $videos[$k]['description'] = htmlentities($video['description'], ENT_XML1);
                 }
             }
+
+            if ($googlenews)
+            {
+                if (isset($googlenews['sitename'])) $googlenews['sitename'] = htmlentities($googlenews['sitename'], ENT_XML1);
+            }
+
         }
 
+        $googlenews['sitename'] = isset($googlenews['sitename']) ? $googlenews['sitename'] : '';
+        $googlenews['language'] = isset($googlenews['language']) ? $googlenews['language'] : 'en';
+        $googlenews['pubication_date'] = isset($googlenews['pubication_date']) ? $googlenews['pubication_date'] : date('Y-m-d H:i:s');
 
         $this->model->setItems(
                 array(
@@ -124,7 +134,8 @@ class Sitemap
                     'images' => $images,
                     'title' => $title,
                     'translations' => $translations,
-                    'videos' => $videos
+                    'videos' => $videos,
+                    'googlenews' => $googlenews
                 )
         );
     }
@@ -152,7 +163,7 @@ class Sitemap
     /**
      * Returns document with all sitemap items from $items array
      *
-     * @param string $format (options: xml, html, txt, ror-rss, ror-rdf)
+     * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, google-news)
      *
      * @return View
      */
@@ -172,7 +183,7 @@ class Sitemap
     /**
      * Generates document with all sitemap items from $items array
      *
-     * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, sitemapindex)
+     * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, sitemapindex, google-news)
      *
      * @return array
      */
@@ -232,7 +243,7 @@ class Sitemap
     /**
      * Generate sitemap and store it to a file
      *
-     * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, sitemapindex)
+     * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, sitemapindex, google-news)
      * @param string $filename (without file extension, may be a path like 'sitemaps/sitemap1' but must exist)
      *
      * @return void
@@ -241,7 +252,7 @@ class Sitemap
     {
         $data = $this->generate($format);
 
-        if ($format == 'ror-rss' || $format == 'ror-rdf' || $format == 'sitemapindex')
+        if ($format == 'ror-rss' || $format == 'ror-rdf' || $format == 'sitemapindex' || $format == 'google-news')
         {
             $format = 'xml';
         }
