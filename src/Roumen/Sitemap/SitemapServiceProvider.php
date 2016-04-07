@@ -38,7 +38,7 @@ class SitemapServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider.
+     * Register the service provider.a
      *
      * @return void
      */
