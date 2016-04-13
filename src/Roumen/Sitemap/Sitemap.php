@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Contracts\Routing\UrlGenerator;
 
 
 class Sitemap
@@ -161,6 +162,8 @@ class Sitemap
 
         // set default values
         if (!isset($loc)) $loc = '/';
+        $loc = $this->location($loc);
+
         if (!isset($lastmod)) $lastmod = null;
         if (!isset($priority)) $priority = null;
         if (!isset($freq)) $freq = null;
@@ -245,6 +248,25 @@ class Sitemap
         ]);
     }
 
+    /**
+     * Get current location.
+     *
+     * @param UrlGenerator|string $loc
+     * @return string
+     * @throws \Exception
+     */
+    private function location($loc)
+    {
+        if ($loc instanceof UrlGenerator) {
+            return $loc->current();
+        }
+
+        if (is_string($loc)) {
+            return $loc;
+        }
+
+        throw new \Exception("Invalid location parameter");
+    }
 
     /**
      * Add new sitemap to $sitemaps array
