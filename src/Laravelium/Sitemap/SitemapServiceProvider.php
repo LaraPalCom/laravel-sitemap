@@ -1,7 +1,8 @@
-<?php namespace Laravelium\Sitemap;
+<?php
+
+namespace Laravelium\Sitemap;
 
 use Illuminate\Support\ServiceProvider;
-use Laravelium\Sitemap\Sitemap;
 
 class SitemapServiceProvider extends ServiceProvider
 {
@@ -19,22 +20,22 @@ class SitemapServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../../views', 'sitemap');
+        $this->loadViewsFrom(__DIR__.'/../../views', 'sitemap');
 
-        $config_file = __DIR__ . '/../../config/config.php';
+        $config_file = __DIR__.'/../../config/config.php';
 
         $this->mergeConfigFrom($config_file, 'sitemap');
 
         $this->publishes([
-            $config_file => config_path('sitemap.php')
+            $config_file => config_path('sitemap.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__ . '/../../views' => base_path('resources/views/vendor/sitemap')
+            __DIR__.'/../../views' => base_path('resources/views/vendor/sitemap'),
         ], 'views');
 
         $this->publishes([
-            __DIR__ . '/../../public' => public_path('vendor/sitemap')
+            __DIR__.'/../../public' => public_path('vendor/sitemap'),
         ], 'public');
     }
 
@@ -45,11 +46,25 @@ class SitemapServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('sitemap', function ()
-        {
+        $this->app->bind('sitemap', function ($app) {
             $config = config('sitemap');
 
-            return new Sitemap($config);
+                    $config = [
+            'sitemap.use_cache'       => false,
+            'sitemap.cache_key'       => 'Laravel.Sitemap.',
+            'sitemap.cache_duration'  => 3600,
+            'sitemap.testing'         => true,
+            'sitemap.styles_location' => '/styles/',
+        ];
+
+            return new Sitemap(
+                $config,
+                $app['Illuminate\Cache\Repository'],
+                $app['config'],
+                $app['files'],
+                $app['Illuminate\Contracts\Routing\ResponseFactory'],
+                $app['view']
+            );
         });
 
         $this->app->alias('sitemap', Sitemap::class);

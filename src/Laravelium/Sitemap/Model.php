@@ -1,20 +1,22 @@
-<?php namespace Laravelium\Sitemap;
+<?php
+
+namespace Laravelium\Sitemap;
 
 /**
  * Model class for laravel-sitemap package.
  *
  * @author Roumen Damianoff <roumen@damianoff.com>
- * @version 2.6.5
- * @link http://roumen.it/projects/laravel-sitemap
+ *
+ * @version 3.0.1
+ *
+ * @link https://laravelium.com
+ *
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
-
-use Illuminate\Support\Facades\Cache;
-
 class Model
 {
     /**
-     * @var boolean
+     * @var bool
      */
     public $testing = false;
 
@@ -39,64 +41,70 @@ class Model
     private $link = null;
 
     /**
-     * Enable or disable xsl styles
+     * Enable or disable xsl styles.
      *
-     * @var boolean
+     * @var bool
      */
     private $useStyles = true;
 
     /**
-     * Set custom location for xsl styles (must end with slash)
+     * Set custom location for xsl styles (must end with slash).
      *
      * @var string
      */
-    private $sloc = null;
+    private $sloc = '/vendor/sitemap/styles/';
 
     /**
-     * Enable or disable cache
+     * Enable or disable cache.
      *
-     * @var boolean
+     * @var bool
      */
     private $useCache = false;
 
     /**
-     * Unique cache key
+     * Unique cache key.
      *
      * @var string
      */
-    private $cacheKey = "laravel-sitemap.";
+    private $cacheKey = 'laravel-sitemap.';
 
     /**
-     * Cache duration, can be int or timestamp
+     * Cache duration, can be int or timestamp.
      *
      * @var Carbon|Datetime|int
      */
     private $cacheDuration = 3600;
 
     /**
-     * Escaping html entities
+     * Escaping html entities.
      *
-     * @var boolean
+     * @var bool
      */
     private $escaping = true;
 
     /**
-     * Use limitSize() for big sitemaps
+     * Use limitSize() for big sitemaps.
      *
-     * @var boolean
+     * @var bool
      */
     private $useLimitSize = false;
 
     /**
-     * Custom max size for limitSize()
+     * Custom max size for limitSize().
      *
-     * @var boolean
+     * @var bool
      */
     private $maxSize = null;
 
+    /**
+     * Use gzip compression.
+     *
+     * @var bool
+     */
+    private $useGzip = false;
 
     /**
-     * Populating model variables from configuation file
+     * Populating model variables from configuation file.
      *
      * @param array $config
      */
@@ -111,11 +119,11 @@ class Model
         $this->sloc = isset($config['styles_location']) ? $config['styles_location'] : $this->sloc;
         $this->maxSize = isset($config['max_size']) ? $config['max_size'] : $this->maxSize;
         $this->testing = isset($config['testing']) ? $config['testing'] : $this->testing;
+        $this->useGzip = isset($config['use_gzip']) ? $config['use_gzip'] : $this->useGzip;
     }
 
-
     /**
-     * Returns $items array
+     * Returns $items array.
      *
      * @return array
      */
@@ -125,7 +133,7 @@ class Model
     }
 
     /**
-     * Returns $sitemaps array
+     * Returns $sitemaps array.
      *
      * @return array
      */
@@ -134,9 +142,8 @@ class Model
         return $this->sitemaps;
     }
 
-
     /**
-     * Returns $title value
+     * Returns $title value.
      *
      * @return string
      */
@@ -145,9 +152,8 @@ class Model
         return $this->title;
     }
 
-
     /**
-     * Returns $link value
+     * Returns $link value.
      *
      * @return string
      */
@@ -156,20 +162,18 @@ class Model
         return $this->link;
     }
 
-
     /**
-     * Returns $useStyles value
+     * Returns $useStyles value.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUseStyles()
     {
         return $this->useStyles;
     }
 
-
     /**
-     * Returns $sloc value
+     * Returns $sloc value.
      *
      * @return string
      */
@@ -178,20 +182,18 @@ class Model
         return $this->sloc;
     }
 
-
     /**
-     * Returns $useCache value
+     * Returns $useCache value.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUseCache()
     {
         return $this->useCache;
     }
 
-
     /**
-     * Returns $CacheKey value
+     * Returns $CacheKey value.
      *
      * @return string
      */
@@ -200,9 +202,8 @@ class Model
         return $this->cacheKey;
     }
 
-
     /**
-     * Returns $CacheDuration value
+     * Returns $CacheDuration value.
      *
      * @return string
      */
@@ -211,53 +212,58 @@ class Model
         return $this->cacheDuration;
     }
 
-
     /**
-     * Returns $escaping value
+     * Returns $escaping value.
      *
-     * @return boolean
+     * @return bool
      */
     public function getEscaping()
     {
         return $this->escaping;
     }
 
-
     /**
-     * Returns $useLimitSize value
+     * Returns $useLimitSize value.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUseLimitSize()
     {
         return $this->useLimitSize;
     }
 
-
     /**
-     * Returns $maxSize value
+     * Returns $maxSize value.
      *
-     * @param integer $maxSize
+     * @param int $maxSize
      */
     public function getMaxSize()
     {
         return $this->maxSize;
     }
 
+    /**
+     * Returns $useGzip value.
+     *
+     * @param bool $useGzip
+     */
+    public function getUseGzip()
+    {
+        return $this->useGzip;
+    }
 
     /**
-     * Sets $escaping value
+     * Sets $escaping value.
      *
-     * @param boolean $escaping
+     * @param bool $escaping
      */
     public function setEscaping($b)
     {
         $this->escaping = $b;
     }
 
-
     /**
-     * Adds item to $items array
+     * Adds item to $items array.
      *
      * @param array $item
      */
@@ -266,9 +272,8 @@ class Model
         $this->items[] = $items;
     }
 
-
     /**
-     * Adds sitemap to $sitemaps array
+     * Adds sitemap to $sitemaps array.
      *
      * @param array $sitemap
      */
@@ -277,9 +282,8 @@ class Model
         $this->sitemaps[] = $sitemap;
     }
 
-
     /**
-     * Sets $title value
+     * Sets $title value.
      *
      * @param string $title
      */
@@ -288,9 +292,8 @@ class Model
         $this->title = $title;
     }
 
-
     /**
-     * Sets $link value
+     * Sets $link value.
      *
      * @param string $link
      */
@@ -299,20 +302,18 @@ class Model
         $this->link = $link;
     }
 
-
     /**
-     * Sets $useStyles value
+     * Sets $useStyles value.
      *
-     * @param boolean $useStyles
+     * @param bool $useStyles
      */
     public function setUseStyles($useStyles)
     {
         $this->useStyles = $useStyles;
     }
 
-
     /**
-     * Sets $sloc value
+     * Sets $sloc value.
      *
      * @param string $sloc
      */
@@ -321,74 +322,76 @@ class Model
         $this->sloc = $sloc;
     }
 
-
     /**
-     * Sets $useLimitSize value
+     * Sets $useLimitSize value.
      *
-     * @param boolean $useLimitSize
+     * @param bool $useLimitSize
      */
     public function setUseLimitSize($useLimitSize)
     {
         $this->useLimitSize = $useLimitSize;
     }
 
-
     /**
-     * Sets $maxSize value
+     * Sets $maxSize value.
      *
-     * @param integer $maxSize
+     * @param int $maxSize
      */
     public function setMaxSize($maxSize)
     {
         $this->maxSize = $maxSize;
     }
 
+    /**
+     * Sets $useGzip value.
+     *
+     * @param bool $useGzip
+     */
+    public function setUseGzip($useGzip=true)
+    {
+        $this->useGzip = $useGzip;
+    }
 
     /**
-     * Limit size of $items array to 50000 elements (1000 for google-news)
-     *
+     * Limit size of $items array to 50000 elements (1000 for google-news).
      */
-    public function limitSize($max=50000)
+    public function limitSize($max = 50000)
     {
         $this->items = array_slice($this->items, 0, $max);
     }
 
-
     /**
-     * Reset $items array
+     * Reset $items array.
      *
      * @param array $items
      */
-    public function resetItems($items=[])
+    public function resetItems($items = [])
     {
         $this->items = $items;
     }
 
-
     /**
-     * Reset $sitemaps array
+     * Reset $sitemaps array.
      *
      * @param array $sitemaps
      */
-    public function resetSitemaps($sitemaps=[])
+    public function resetSitemaps($sitemaps = [])
     {
         $this->sitemaps = $sitemaps;
     }
 
-
     /**
-     * Set use cache value
+     * Set use cache value.
      *
-     * @param boolean $useCache
+     * @param bool $useCache
      */
-    public function setUseCache($useCache)
+    public function setUseCache($useCache = true)
     {
         $this->useCache = $useCache;
     }
 
-
     /**
-     * Set cache key value
+     * Set cache key value.
      *
      * @param string $cacheKey
      */
@@ -397,9 +400,8 @@ class Model
         $this->cacheKey = $cacheKey;
     }
 
-
     /**
-     * Set cache duration value
+     * Set cache duration value.
      *
      * @param Carbon|Datetime|int $cacheDuration
      */
@@ -407,6 +409,4 @@ class Model
     {
         $this->cacheDuration = $cacheDuration;
     }
-
-
 }
