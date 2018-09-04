@@ -1,28 +1,29 @@
 {
-    "name": "roumen/sitemap",
-    "description": "A not so simple sitemap generator for Laravel.",
-    "homepage": "https://roumen.it/projects/laravel-sitemap",
-    "keywords": ["laravel", "sitemap", "generator"],
+    "name": "laravelium/sitemap",
+    "description": "Laravelium Sitemap package for Laravel.",
+    "homepage": "https://laravelium.com",
+    "keywords": ["laravelium", "laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
     "license": "MIT",
     "authors": [
         {
             "name": "Roumen Damianoff",
-            "email": "roumen@crimsson.com",
+            "email": "roumen@damianoff.com",
             "role": "Developer",
-            "homepage": "https://roumen.it"
+            "homepage": "https://damianoff.com"
         }
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/support": "~5"
+        "illuminate/support": "5.4.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "orchestra/testbench": "3.4.*"
     },
     "autoload": {
         "psr-0": {
-            "Roumen\\Sitemap": "src/"
+            "Laravelium\\Sitemap": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

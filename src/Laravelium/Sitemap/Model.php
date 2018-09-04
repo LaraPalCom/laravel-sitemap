@@ -1,9 +1,9 @@
-<?php namespace Roumen\Sitemap;
+<?php namespace Laravelium\Sitemap;
 
 /**
  * Model class for laravel-sitemap package.
  *
- * @author Roumen Damianoff <roumen@crimsson.com>
+ * @author Roumen Damianoff <roumen@damianoff.com>
  * @version 2.6.5
  * @link http://roumen.it/projects/laravel-sitemap
  * @license http://opensource.org/licenses/mit-license.php MIT License

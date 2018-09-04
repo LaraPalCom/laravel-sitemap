@@ -1,55 +1,71 @@
-# [laravel-sitemap](http://roumen.it/projects/laravel-sitemap) package
+# **[Laravelium Sitemap](https://laravelium.com) package**
 
-[![Latest Stable Version](https://poser.pugx.org/roumen/sitemap/version.png)](https://packagist.org/packages/roumen/sitemap) [![Total Downloads](https://poser.pugx.org/roumen/sitemap/d/total.png)](https://packagist.org/packages/roumen/sitemap) [![Build Status](https://travis-ci.org/RoumenDamianoff/laravel-sitemap.png?branch=master)](https://travis-ci.org/RoumenDamianoff/laravel-sitemap) [![License](https://poser.pugx.org/roumen/sitemap/license.png)](https://packagist.org/packages/roumen/sitemap)
-
-A not so simple sitemap generator for Laravel 5.
-
+*Laravelium Sitemap generator for Laravel.*
 
 ## Notes
 
-Branch dev-master is for development and is UNSTABLE!
+- Dev Branches are for development and are **UNSTABLE** (*use on your own risk*)!
 
 ## Installation
 
-Run the following command and provide the latest stable version (e.g v2.6.4) :
+Run the following command and provide the latest stable version (e.g v3.0.\*) :
 
 ```bash
-composer require roumen/sitemap
+composer require laravelium/sitemap
 ```
 
-or add the following to your `composer.json` file :
+*or add the following to your `composer.json` file :*
 
+#### For Laravel 5.7
 ```json
-"roumen/sitemap": "2.6.*"
+"laravelium/sitemap": "3.0.*"
+```
+(development branch)
+```json
+"laravelium/sitemap": "3.0.x-dev"
 ```
 
-Then register this service provider with Laravel :
-
-```php
-'Roumen\Sitemap\SitemapServiceProvider',
+#### For Laravel 5.6
+```json
+"laravelium/sitemap": "2.8.*"
+```
+(development branch)
+```json
+"laravelium/sitemap": "2.8.x-dev"
 ```
 
-#### for Laravel 5.2/5.3 service provider should be :
-
-```php
-Roumen\Sitemap\SitemapServiceProvider::class,
+#### For Laravel 5.5
+```json
+"laravelium/sitemap": "2.7.*"
+```
+(development branch)
+```json
+"laravelium/sitemap": "2.7.x-dev"
 ```
 
-Publish needed assets (styles, views, config files) :
+*Publish needed assets (styles, views, config files) :*
 
 ```bash
-php artisan vendor:publish --provider="Roumen\Sitemap\SitemapServiceProvider"
+php artisan vendor:publish --provider="Laravelium\Sitemap\SitemapServiceProvider"
 ```
-*Note:* Composer won't update them after `composer update`, you'll need to do it manually!
+**Note:** *Composer won't update them after `composer update`, you'll need to do it manually!*
 
 ## Examples
 
-- [How to generate dynamic sitemap (with optional caching)](https://github.com/RoumenDamianoff/laravel-sitemap/wiki/Dynamic-sitemap)
+- [How to generate dynamic sitemap (with optional caching)](https://gitlab.com/Laravelium/Sitemap/wikis/Dynamic-sitemap)
 
-- [How to generate BIG sitemaps (with more than 1M items)](https://github.com/RoumenDamianoff/laravel-sitemap/wiki/Generate-BIG-sitemaps)
+- [How to generate BIG sitemaps (with more than 1M items)](https://gitlab.com/Laravelium/Sitemap/wikis/Generate-BIG-sitemaps)
 
-- [How to generate sitemap to a file](https://github.com/RoumenDamianoff/laravel-sitemap/wiki/Generate-sitemap)
+- [How to generate sitemap to a file](https://gitlab.com/Laravelium/Sitemap/wikis/Generate-sitemap)
 
-- [How to use multiple sitemaps with sitemap index](https://github.com/RoumenDamianoff/laravel-sitemap/wiki/Sitemap-index)
+- [How to use multiple sitemaps with sitemap index](https://gitlab.com/Laravelium/Sitemap/wikis/Sitemap-index)
 
-and more in the [Wiki](https://github.com/RoumenDamianoff/laravel-sitemap/wiki).
+and more in the [Wiki](https://gitlab.com/Laravelium/Sitemap/wikis/home).
+
+## Contribution guidelines
+
+Before submiting new merge request or creating new issue, please read [contribution guidelines](https://gitlab.com/Laravelium/Sitemap/blob/master/CONTRIBUTING.md).
+
+## License
+
+This package is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

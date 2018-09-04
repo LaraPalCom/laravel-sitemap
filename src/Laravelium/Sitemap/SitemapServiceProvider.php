@@ -1,7 +1,7 @@
-<?php namespace Roumen\Sitemap;
+<?php namespace Laravelium\Sitemap;
 
 use Illuminate\Support\ServiceProvider;
-use Roumen\Sitemap\Sitemap;
+use Laravelium\Sitemap\Sitemap;
 
 class SitemapServiceProvider extends ServiceProvider
 {

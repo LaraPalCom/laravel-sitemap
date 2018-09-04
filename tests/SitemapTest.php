@@ -17,7 +17,7 @@ class SitemapTest extends PHPUnit_Framework_TestCase
             'testing' => true
         ];
 
-        $this->sitemap = new Roumen\Sitemap\Sitemap($config);
+        $this->sitemap = new Laravelium\Sitemap\Sitemap($config);
     }
 
 
