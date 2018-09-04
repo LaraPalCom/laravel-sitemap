@@ -20,6 +20,16 @@ before_script:
     # run composer install
     - php composer.phar install
 
+# test php 7.0
+test:php7.0:
+
+  image: php:7.0
+
+  script:
+  - vendor/bin/phpunit --configuration phpunit.xml --coverage-text --colors=never
+
+  allow_failure: false
+
 # test php 7.1
 test:php7.1:
 
