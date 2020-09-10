@@ -23,7 +23,7 @@
 		"illuminate/filesystem": "^8.0"
 	},
 	"require-dev": {
-		"laravel/framework": "^7.0",
+		"laravel/framework": "^8.0",
 		"phpunit/phpunit": "^8.0",
 		"orchestra/testbench-core": "^5.0",
 		"php-coveralls/php-coveralls" : "^2.2"
