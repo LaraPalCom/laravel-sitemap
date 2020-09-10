@@ -10,7 +10,7 @@
 
 ## Installation
 
-Run the following command and provide the latest stable version (e.g v7.0.\*) :
+Run the following command and provide the latest stable version (e.g v8.\*) :
 
 ```bash
 composer require laravelium/sitemap
@@ -18,22 +18,31 @@ composer require laravelium/sitemap
 
 *or add the following to your `composer.json` file :*
 
-#### For Laravel 7.0
+#### For Laravel 8
 ```json
-"laravelium/sitemap": "7.0.*"
+"laravelium/sitemap": "8.*"
 ```
 (development branch)
 ```json
-"laravelium/sitemap": "7.0.x-dev"
+"laravelium/sitemap": "8.x-dev"
 ```
 
-#### For Laravel 6.0
+#### For Laravel 7
 ```json
-"laravelium/sitemap": "6.0.*"
+"laravelium/sitemap": "7.*"
 ```
 (development branch)
 ```json
-"laravelium/sitemap": "6.0.x-dev"
+"laravelium/sitemap": "7.x-dev"
+```
+
+#### For Laravel 6
+```json
+"laravelium/sitemap": "6.*"
+```
+(development branch)
+```json
+"laravelium/sitemap": "6.x-dev"
 ```
 
 #### For Laravel 5.8
