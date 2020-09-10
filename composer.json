@@ -18,9 +18,9 @@
 		"wiki": "https://github.com/Laravelium/laravel-sitemap/wiki"
 	},
 	"require": {
-		"php": ">=7.2.5",
-		"illuminate/support": "^7.0",
-		"illuminate/filesystem": "^7.0"
+		"php": "^7.3",
+		"illuminate/support": "^8.0",
+		"illuminate/filesystem": "^8.0"
 	},
 	"require-dev": {
 		"laravel/framework": "^7.0",
