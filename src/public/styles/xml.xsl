@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8"/>
 <title>XML Sitemap</title>
-<script type="text/javascript" src="https://cdn.damianoff.com/repo/jquery/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="https://cdn.damianoff.com/repo/jquery.tablesorter/2.0.5/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.0.10/js/jquery.tablesorter.min.js"></script>
 <script	type="text/javascript"><![CDATA[
 $(document).ready(function() {
 $("#sitemap").tablesorter({sortList:[[6,1],[4,1]],widgets:['zebra']});
