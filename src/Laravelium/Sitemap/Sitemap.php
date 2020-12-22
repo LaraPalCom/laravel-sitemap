@@ -244,6 +244,15 @@ class Sitemap
                     if (! empty($video['title'])) {
                         $videos[$k]['title'] = htmlentities($video['title'], ENT_XML1);
                     }
+                    if (! empty($video['thumbnail_loc'])) {
+                        $videos[$k]['thumbnail_loc'] = htmlentities($video['thumbnail_loc'], ENT_XML1);
+                    }
+                    if (! empty($video['content_loc'])) {
+                        $videos[$k]['content_loc'] = htmlentities($video['content_loc'], ENT_XML1);
+                    }
+                    if (! empty($video['player_loc'])) {
+                        $videos[$k]['player_loc'] = htmlentities($video['player_loc'], ENT_XML1);
+                    }
                     if (! empty($video['description'])) {
                         $videos[$k]['description'] = htmlentities($video['description'], ENT_XML1);
                     }

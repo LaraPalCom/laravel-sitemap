@@ -200,6 +200,8 @@ class SitemapTest extends TestCase
         // videos
         $this->assertEquals($videos[0]['content_loc'], $items[0]['videos'][0]['content_loc']);
         $this->assertEquals($videos[1]['content_loc'], $items[0]['videos'][1]['content_loc']);
+        $this->assertEquals($videos[0]['player_loc'], $items[0]['videos'][0]['player_loc']);
+        $this->assertEquals($videos[0]['thumbnail_loc'], $items[0]['videos'][0]['thumbnail_loc']);
         $this->assertEquals('TestTitle2&amp;', $items[0]['videos'][1]['title']);
         $this->assertEquals('TestDescription2&amp;', $items[0]['videos'][1]['description']);
 
