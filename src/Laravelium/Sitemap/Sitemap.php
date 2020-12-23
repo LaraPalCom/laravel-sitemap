@@ -359,17 +359,19 @@ class Sitemap
         ];
 
         // check if styles are enabled
-        if ($this->model->getUseStyles()) {
-            if (null != $this->model->getSloc() && file_exists(public_path($this->model->getSloc().$format.'.xsl'))) {
-                // use style from your custom location
-                $style = $this->model->getSloc().$format.'.xsl';
+        if (null == $style) {
+            if ($this->model->getUseStyles()) {
+                if (null != $this->model->getSloc() && file_exists(public_path($this->model->getSloc().$format.'.xsl'))) {
+                    // use style from your custom location
+                    $style = $this->model->getSloc().$format.'.xsl';
+                } else {
+                    // don't use style
+                    $style = null;
+                }
             } else {
                 // don't use style
                 $style = null;
             }
-        } else {
-            // don't use style
-            $style = null;
         }
 
         switch ($format) {
