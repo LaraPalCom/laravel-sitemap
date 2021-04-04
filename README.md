@@ -18,6 +18,10 @@ composer require laravelium/sitemap
 
 *or add the following to your `composer.json` file :*
 
+### :film_strip: Video Tutorial 
+Video tutorial can be found [here](https://youtu.be/6M4OsMcIgpI)
+
+
 #### For Laravel 8
 ```json
 "laravelium/sitemap": "8.*"
