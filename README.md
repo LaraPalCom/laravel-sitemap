@@ -21,7 +21,6 @@ composer require laravelium/sitemap
 ### :film_strip: Video Tutorial 
 Video tutorial can be found [here](https://youtu.be/6M4OsMcIgpI)
 
-
 #### For Laravel 8
 ```json
 "laravelium/sitemap": "8.*"
