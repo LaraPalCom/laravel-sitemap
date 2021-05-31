@@ -310,7 +310,7 @@ class Sitemap
      * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, google-news)
      * @param string $style  (path to custom xls style like '/styles/xsl/xml-sitemap.xsl')
      *
-     * @return View
+     * @return \Illuminate\Http\Response
      */
     public function render($format = 'xml', $style = null)
     {
