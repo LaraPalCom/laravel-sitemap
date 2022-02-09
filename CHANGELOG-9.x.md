@@ -5,5 +5,6 @@
 
 ### Added
 
-- Added support to Laravel 9
+- Add support for Laravel 9
+- Drop support for Laravel < 9
 - Dropped support for PHP < 8
